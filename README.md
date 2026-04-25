@@ -3,7 +3,7 @@
 Interactive storyboard presentation for the DARAK Real Estate pitch. Built by
 **Strike Media** for the Quest Towers / Marina I Residence project.
 
-**Live:** https://darak.netlify.app
+**Live:** https://darak-pitch.netlify.app
 **Concept:** Comedic narrative TVC — Aziz, 60, with Gen Z energy, hosting his
 old folks crew at Marina I Residence. 8 scenes, 7 characters, 1 tagline:
 
