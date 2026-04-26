@@ -86,6 +86,17 @@ body {
   scroll-snap-align: center;
 }
 
+/* Vertical snap for storyboard panels — proximity, so users can still free-scroll. */
+@media (min-width: 768px) {
+  #storyboard {
+    scroll-snap-type: y proximity;
+  }
+  .panel-snap {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

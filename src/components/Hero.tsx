@@ -4,64 +4,76 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      dir="rtl"
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink-950 vignette grain"
     >
       <div className="absolute inset-0 hero-glow" />
       <div
         className="absolute inset-0 opacity-25"
         style={{
-          backgroundImage: "url(/assets/storyboard/page-01.png)",
+          backgroundImage: "url(/assets/storyboard/page-01.webp)",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          filter: "grayscale(100%) contrast(1.1) brightness(0.55)",
+          filter: "grayscale(100%) contrast(1.1) brightness(0.5)",
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-ink-950/40 to-ink-950" />
 
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 pt-32 md:pt-40 pb-12 min-h-[100svh] flex flex-col">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12 min-h-[100svh] flex flex-col">
+        {/* Top eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.0, ease: "easeOut" }}
-          className="flex items-center gap-3 text-[11px] tracking-widest2 uppercase text-bone/60"
+          className="flex items-center gap-3 text-[12px] tracking-widest text-bone/60"
         >
           <span className="inline-block w-8 h-px bg-strike" />
-          TVC Concept · Draft 01
+          <span>تصور دعائي · الـ <bdi>Draft</bdi> الأول</span>
         </motion.div>
 
+        {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.15, ease: "easeOut" }}
-          className="mt-6 text-[14vw] md:text-[7.5vw] leading-[0.92] font-black tracking-tight"
-          style={{ fontFeatureSettings: "'ss01'" }}
+          className="mt-8 text-[12vw] md:text-[7vw] leading-[1.05] font-black tracking-tight"
         >
-          Marina <span className="text-strike">I</span> Residence
+          مارينا <span className="text-strike">آي</span> ريزيدنس
           <br />
-          <span className="text-bone/55 font-light italic">× DARAK</span>
+          <span className="text-bone/55 font-light">
+            × <bdi>DARAK</bdi>
+          </span>
         </motion.h1>
 
+        {/* Subline */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.4, delay: 0.6 }}
-          className="mt-8 max-w-2xl text-bone/70 text-base md:text-lg leading-relaxed"
+          className="mt-8 max-w-2xl text-bone/75 text-lg md:text-2xl leading-relaxed"
         >
-          A comedic narrative TVC built around premium real estate. Eight
-          scenes. Seven characters. One tagline that lands harder than the
-          punchline before it.
+          ثمانية مشاهد. سبع شخصيات. تاجلاين واحد ينزل أقوى من اللي قبله.
         </motion.p>
 
-        <div className="mt-auto pt-16 flex items-end justify-between">
+        {/* Bottom row: CTA + Strike logo */}
+        <div className="mt-auto pt-16 flex items-end justify-between gap-6">
           <motion.a
             href="#concept"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.4, delay: 1.0 }}
-            className="group flex items-center gap-3 text-[11px] tracking-widest2 uppercase text-bone/70 hover:text-bone"
+            className="group flex items-center gap-3 text-[12px] tracking-widest text-bone/70 hover:text-bone"
           >
+            <motion.span
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="text-strike text-2xl leading-none"
+              aria-hidden
+            >
+              ↓
+            </motion.span>
+            ابدأ من المفهوم
             <span className="inline-block w-10 h-px bg-bone/40 group-hover:bg-strike group-hover:w-16 transition-all duration-500" />
-            Begin
           </motion.a>
 
           <motion.div
@@ -73,7 +85,7 @@ export default function Hero() {
             <img
               src="/assets/brand/strike-media-logo.png"
               alt="Strike Media"
-              className="h-7 md:h-8 w-auto opacity-90"
+              className="h-7 md:h-9 w-auto opacity-90"
             />
           </motion.div>
         </div>

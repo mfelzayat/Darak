@@ -1,84 +1,69 @@
 import { motion } from "framer-motion";
+import { concept } from "../data";
+import { ar } from "../lib/bidi";
 
 export default function Concept() {
   return (
     <section
       id="concept"
-      className="relative bg-ink-950 py-28 md:py-40 px-6 md:px-12 overflow-hidden"
+      dir="rtl"
+      className="relative bg-ink-950 overflow-hidden"
     >
-      <div className="max-w-[1500px] mx-auto grid md:grid-cols-12 gap-10 md:gap-16 items-center">
+      {/* dim cinematic backdrop using a frame */}
+      <div
+        className="absolute inset-0 opacity-[0.18]"
+        style={{
+          backgroundImage: "url(/assets/storyboard-webp/page-08.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "grayscale(100%) contrast(1.1) brightness(0.45)",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink-950 via-ink-950/90 to-ink-950" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(212,33,40,0.08),transparent_55%)]" />
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 py-28 md:py-44">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="md:col-span-6"
         >
-          <div className="text-[11px] tracking-widest2 uppercase text-strike mb-6">
-            01 / The Concept
+          <div className="flex items-center gap-3 text-[12px] tracking-widest text-strike">
+            <span className="inline-block w-10 h-px bg-strike" />
+            <span>المفهوم</span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-black leading-[0.95] tracking-tight">
-            Old soul.<br />
-            <span className="text-bone/45">New energy.</span>
+
+          <h2 className="mt-6 text-4xl md:text-6xl font-black leading-[1.15] tracking-tight max-w-4xl">
+            كوميديا، شاطئ، و جيل بيرفض يكبر.
           </h2>
 
-          <div
-            dir="rtl"
-            className="font-ar mt-10 text-[1.35rem] md:text-2xl leading-[1.85] text-bone/85"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.1, delay: 0.2 }}
+            className="mt-12 max-w-3xl text-bone/85 text-xl md:text-[26px] leading-[1.95] font-light"
           >
-            <p>
-              عزيز، ⁦60⁩ سنة، عايش بعقلية الـ⁦Gen Z⁩. عنده شاليه
-              في ⁦Marina I Residence⁩، ودايماً جامع زيجاوزه ـ
-              النخبة الكبار ـ يحاولوا يلحقوا بإيقاعه. كل مشهد كوميدي،
-              كل لقطة بريميوم، وكل تفصيلة بتقول إن الحياة لو راحت
-              ـ مش بترجع.
-            </p>
-            <p className="mt-6 text-bone/55 text-lg">
-              تنفيذ سينمائي يحول العقار لتجربة ـ مش إعلان.
-            </p>
-          </div>
+            {ar(concept)}
+          </motion.p>
 
-          <div className="mt-10 flex flex-wrap gap-2 text-[11px] tracking-widest2 uppercase">
-            {["Comedy", "Premium", "Cinematic", "Narrative", "Lifestyle"].map(
-              (t) => (
-                <span
-                  key={t}
-                  className="px-3 py-1.5 rounded-full border border-white/10 text-bone/65"
-                >
-                  {t}
-                </span>
-              )
-            )}
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.1, ease: "easeOut" }}
-          className="md:col-span-6 relative"
-        >
-          <div className="relative aspect-[4/5] md:aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 group">
-            <img
-              src="/assets/storyboard/page-09.png"
-              alt="Marina I Residence — chalet terrace storyboard"
-              className="w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/95 via-ink-950/10 to-ink-950/30" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-              <div className="text-[10px] tracking-widest2 uppercase text-strike mb-2">
-                Storyboard · Scene 03
-              </div>
-              <div className="text-bone/90 text-sm md:text-base">
-                Chalet terrace · Aziz hosts the sunset session
-              </div>
-            </div>
-          </div>
-
-          {/* corner brackets for cinematic frame */}
-          <div className="absolute -top-3 -left-3 w-8 h-8 border-l-2 border-t-2 border-strike/70" />
-          <div className="absolute -bottom-3 -right-3 w-8 h-8 border-r-2 border-b-2 border-strike/70" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 1.0, delay: 0.5 }}
+            className="mt-12 flex flex-wrap gap-2 text-[12px]"
+          >
+            {["كوميديا", "بريميوم", "سينمائي", "حكاية", "نمط حياة"].map((t) => (
+              <span
+                key={t}
+                className="px-4 py-2 rounded-full border border-white/10 text-bone/65"
+              >
+                {t}
+              </span>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

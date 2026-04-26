@@ -1,4 +1,3 @@
-import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import Concept from "./components/Concept";
 import CastGrid from "./components/CastGrid";
@@ -8,8 +7,10 @@ import Production from "./components/Production";
 
 export default function App() {
   return (
-    <main className="bg-ink-950 text-bone min-h-screen overflow-x-hidden">
-      <Nav />
+    <main
+      dir="rtl"
+      className="bg-ink-950 text-bone min-h-screen overflow-x-hidden font-ar"
+    >
       <Hero />
       <Concept />
       <CastGrid />
