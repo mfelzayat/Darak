@@ -19,12 +19,32 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-ink-950/40 to-ink-950" />
 
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-12 min-h-[100svh] flex flex-col">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-12 pt-16 md:pt-20 pb-12 min-h-[100svh] flex flex-col">
+        {/* Client × Project logos lockup */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.0, ease: "easeOut" }}
+          className="flex items-center justify-center md:justify-start gap-6 md:gap-10 mb-8 md:mb-12 flex-wrap"
+        >
+          <img
+            src="/assets/brand/darak-logo.png"
+            alt="DARAK Group"
+            className="h-12 md:h-16 w-auto opacity-95"
+          />
+          <span className="text-bone/35 text-3xl md:text-4xl font-extralight">×</span>
+          <img
+            src="/assets/brand/marina-eye-logo.png"
+            alt="Marina Eye Residence"
+            className="h-14 md:h-20 w-auto bg-white/95 rounded-lg px-3 py-1"
+          />
+        </motion.div>
+
         {/* Top eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0, ease: "easeOut" }}
+          transition={{ duration: 1.0, delay: 0.15, ease: "easeOut" }}
           className="flex items-center gap-3 text-[12px] tracking-widest text-bone/60"
         >
           <span className="inline-block w-8 h-px bg-strike" />
@@ -35,10 +55,10 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.15, ease: "easeOut" }}
-          className="mt-8 text-[12vw] md:text-[7vw] leading-[1.05] font-black tracking-tight"
+          transition={{ duration: 1.1, delay: 0.3, ease: "easeOut" }}
+          className="mt-6 md:mt-8 text-[10vw] md:text-[6.2vw] leading-[1.05] font-black tracking-tight"
         >
-          مارينا <span className="text-strike">آي</span> ريزيدنس
+          مارينا <span className="text-strike">آاي</span> ريزيدينس
           <br />
           <span className="text-bone/55 font-light">
             × <bdi>DARAK</bdi>
