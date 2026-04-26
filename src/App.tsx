@@ -14,6 +14,7 @@ import Option2StoryboardSection from "./components/Option2Storyboard";
 import Option2TaglineReveal from "./components/Option2TaglineReveal";
 
 import OptionToggle from "./components/OptionToggle";
+import EndToggle from "./components/EndToggle";
 import { OptionProvider, useOption } from "./context/OptionContext";
 
 function OptionView() {
@@ -35,6 +36,7 @@ function OptionView() {
             <CastGrid />
             <StoryboardSection />
             <TaglineReveal />
+            <EndToggle />
           </>
         ) : (
           <>
@@ -43,6 +45,7 @@ function OptionView() {
             <Option2CastGrid />
             <Option2StoryboardSection />
             <Option2TaglineReveal />
+            <EndToggle />
           </>
         )}
       </motion.div>
