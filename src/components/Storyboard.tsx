@@ -22,7 +22,7 @@ function StoryboardHeader() {
       <h2 className="text-4xl md:text-7xl font-black leading-[1.1] tracking-tight">
         ثمانية مشاهد.
         <br />
-        <span className="text-bone/45">اثنان وثلاثون كادر.</span>
+        <span className="text-bone/45">ثمانية وعشرون كادر.</span>
       </h2>
       <p className="mt-6 max-w-2xl text-bone/65 text-base md:text-lg leading-relaxed">
         كل لقطة جنب وصفها — نية الإخراج، الديالوج، والكوميديا — لقطة بلقطة.
@@ -238,6 +238,42 @@ function ShotRow({
               ))}
             </div>
           )}
+
+          {/* Sub-images strip — used when one panel covers multiple frames
+              (e.g. page 5 carries pages 6-9 as Aziz's parking attempts). */}
+          {shot.subImages && shot.subImages.length > 0 && (
+            <div className="mt-6">
+              <div className="flex items-center gap-2 text-[11px] tracking-widest text-strike/85 mb-3">
+                <span className="inline-block w-5 h-px bg-strike" />
+                <span>لقطات إضافية ({shot.subImages.length})</span>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+                {shot.subImages.map((name) => (
+                  <a
+                    key={name}
+                    href={`/assets/storyboard/${name}.webp`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/sub block relative aspect-[16/10] overflow-hidden rounded-lg border border-strike/30 bg-ink-900 shadow-[0_15px_40px_-20px_rgba(212,33,40,0.35)] transition-transform duration-500 hover:scale-105 hover:border-strike/70 focus:outline-none focus:ring-2 focus:ring-strike/60"
+                  >
+                    <img
+                      src={`/assets/storyboard/${name}.webp`}
+                      alt={`Sub-frame ${name}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-contain bg-ink-950 transition-transform duration-700 group-hover/sub:scale-[1.04]"
+                    />
+                    <div
+                      dir="ltr"
+                      className="absolute bottom-1 right-1 px-1.5 py-0.5 bg-ink-950/80 backdrop-blur-md rounded text-[9px] tracking-widest text-bone/75 font-mono"
+                    >
+                      {name}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.section>
@@ -295,7 +331,7 @@ export default function StoryboardSection() {
         className="px-6 md:px-12 py-10 max-w-[1600px] mx-auto flex items-center gap-4 text-[10px] tracking-widest text-bone/30"
       >
         <span className="font-mono">
-          <bdi>END · 32 / 32</bdi>
+          <bdi>END · {pad(shots.length)} / {pad(shots.length)}</bdi>
         </span>
         <div className="flex-1 h-px bg-white/5" />
         <span>

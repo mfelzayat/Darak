@@ -1,18 +1,23 @@
 // Per-shot storyboard data — Marina I Residence × DARAK "Old Man" spot.
 //
-// 32 storyboard pages mapped across 8 scenes. Scene assignment was verified
-// per-page using Gemini Vision against the actual storyboard panels (the
-// previous mechanical 4-pages-per-scene assumption was wrong). Distribution
-// is uneven on purpose — that's what the artwork actually shows:
+// MFZ direction (Apr 2026): pages 6-9 are all the same scene — Aziz comedically
+// failing to park 3 times — so they're merged as 4 sub-thumbnails under
+// page-5's main panel instead of 4 separate panels. Page 10 is the bellboy
+// scene (separate panel). Net result: 28 storyboard panels (down from 32),
+// across 8 scenes:
 //
-//   Scene 1 (Marina Entrance) ........ pages 1–4    (4)
-//   Scene 2 (Parking) ................ pages 5–10   (6)
-//   Scene 3 (Chalet Terrace) ......... pages 11–15  (5)
-//   Scene 4 (Walkway) ................ page  16     (1)
-//   Scene 5 (Outdoor Gym) ............ pages 17–20  (4)
-//   Scene 6 (Beach) .................. pages 21–23  (3)
-//   Scene 7 (Infinity Pool) .......... pages 24–25  (2)
-//   Scene 8 (Sky Lounge) ............. pages 26–32  (7)
+//   Scene 1 (Marina Entrance) ........ pages 1–4              (4 panels)
+//   Scene 2 (Parking) ................ page  5 + page 10      (2 panels;
+//                                       page 5 carries pages 6–9 as subImages)
+//   Scene 3 (Chalet Terrace) ......... pages 11–15            (5 panels)
+//   Scene 4 (Walkway) ................ page  16               (1 panel)
+//   Scene 5 (Outdoor Gym) ............ pages 17–20            (4 panels)
+//   Scene 6 (Beach) .................. pages 21–23            (3 panels)
+//   Scene 7 (Infinity Pool) .......... pages 24–25            (2 panels)
+//   Scene 8 (Sky Lounge) ............. pages 26–32            (7 panels)
+//
+// Scenarios for pages 11–32 verified by Gemini Vision spot-checks on pages
+// 11/16/22/28 — current mapping is correct, no shift needed.
 //
 // Arabic dialogue transcribed from script_draft_01.pdf. Latin tokens wrapped
 // with LRI/PDI U+2066…U+2069 so they direction-correctly inside RTL text.
@@ -27,7 +32,7 @@ export type DialogueLine = {
 };
 
 export type Shot = {
-  /** 1..32 — corresponds to /assets/storyboard/page-XX */
+  /** Image page number (1..32) — corresponds to /assets/storyboard/page-XX */
   shotNumber: number;
   /** 1..8 */
   sceneNumber: number;
@@ -39,6 +44,12 @@ export type Shot = {
   scenario: string;
   /** Empty when this beat has no spoken line. */
   dialogue: DialogueLine[];
+  /**
+   * Optional extra storyboard frames that belong to the same panel — rendered
+   * as a row of small thumbnails under the description. File names without
+   * extension, e.g. "page-06" → /assets/storyboard/page-06.webp.
+   */
+  subImages?: string[];
 };
 
 export const sceneTitles: { ar: string; en: string }[] = [
@@ -117,65 +128,28 @@ export const shots: Shot[] = [
     ],
   },
 
-  // ───────── Scene 2 — الباركينج (pages 5-10) ─────────
+  // ───────── Scene 2 — الباركينج (page 5 + page 10) ─────────
   {
     shotNumber: 5,
     sceneNumber: 2,
     sceneNameAr: "الباركينج",
     sceneNameEn: "Parking",
-    cameraNote: "زاوية علوية واسعة · واجهة المشروع كاملة · drone establishing",
+    cameraNote:
+      "كاميرا متابعة comedic dance · pan خلف العربية · ٣ محاولات ركنة",
     scenario:
-      "كاميرا علوية على باركينج ⁦Marina I Residence⁩. مساحات واسعة ومنظمة، عربيات صف ورا صف، وواجهة المبنى لامعة في الخلفية. السيارة البيضاء بتدخل المساحة وفريق الباركينج بيستقبلها.",
+      "عزيز بيحاول يركن العربية مرة، اتنين، تلاتة وبيفشل في كل مرة. الكاميرا بتلف معاه وبتبقى كأنها رقصة كوميدية مع السيارة. حد من فريق الباركينج بتاع ⁦Marina I Residence⁩ بيستنّى بصبر، لابس فِست برتقالي، وبيتفرج بابتسامة سرفيس. الباركينج كله مرتب ومخطط بدقة، الواجهة لامعة في الخلفية.",
     dialogue: [],
-  },
-  {
-    shotNumber: 6,
-    sceneNumber: 2,
-    sceneNameAr: "الباركينج",
-    sceneNameEn: "Parking",
-    cameraNote: "كادر متوسط · بلمان بفِست برتقالي · ابتسامة سرفيس",
-    scenario:
-      "عزيز ووالدته وصلوا الباركينج وفي استقبالهم بلمان لابس فِست برتقالي. الباركينج كله مزدحم لكن منظم، ولافتة ⁦MARINA EYE⁩ مبيّنة وراه. الإحساس فندقي.",
-    dialogue: [],
-  },
-  {
-    shotNumber: 7,
-    sceneNumber: 2,
-    sceneNameAr: "الباركينج",
-    sceneNameEn: "Parking",
-    cameraNote: "تايت على باب السواق · سرفيس valet",
-    scenario:
-      "البلمان بيفتح باب عزيز بأدب، وعزيز بينزل من السيارة بنظرة عيون متفائلة. الكرو كلهم بينزلوا واحد ورا التاني. كل خطوة فيها لمسة بريميوم.",
-    dialogue: [],
-  },
-  {
-    shotNumber: 8,
-    sceneNumber: 2,
-    sceneNameAr: "الباركينج",
-    sceneNameEn: "Parking",
-    cameraNote: "ميديوم · البلمان بياخد العربية · عزيز خارج الكادر",
-    scenario:
-      "البلمان بيقعد في كرسي السواق ومستعد إنه يركن بدل عزيز اللي فشل يركن أكثر من مرة. عزيز ووالدته بيتوقفوا قدّام واجهة المبنى منبهرين بالـ ⁦scale⁩.",
-    dialogue: [],
-  },
-  {
-    shotNumber: 9,
-    sceneNumber: 2,
-    sceneNameAr: "الباركينج",
-    sceneNameEn: "Parking",
-    cameraNote: "wide · عزيز واقف وسط الباركينج · سمير وشبل بيلوّحوا من العربية",
-    scenario:
-      "عزيز واقف في النص بيتأمل المكان، وسمير وشبل لسه قاعدين جوّه السيارة بيلوّحوا له. لقطة تأكيد إن الشلة كلها وصلت سليمة. الباركينج خلفية مثالية.",
-    dialogue: [],
+    subImages: ["page-06", "page-07", "page-08", "page-09"],
   },
   {
     shotNumber: 10,
     sceneNumber: 2,
     sceneNameAr: "الباركينج",
     sceneNameEn: "Parking",
-    cameraNote: "كادر متوسط على البلمان والعربية الطبية · سرفيس متكامل",
+    cameraNote:
+      "لقطة قريبة على إيد البلمان · الشنطة الخلفية · low-angle hero للخدمة",
     scenario:
-      "بلمان مارينا آي ريزيدنس بيشيل الشنط وبيحطها على عربية، وفي نفس الوقت ماريام واقفة جنب عربية صغيرة عليها أدوية وسلندر. سرفيس كامل من اللحظة الأولى.",
+      "بلمان من ⁦I Residence⁩ لابس اليونيفورم بيفتح الشنطة الخلفية وبينزّل الشنط بعناية. لمسة سرفيس فندقية، تأكيد إن المكان فيه طبقة خدمة كاملة من اللحظة الأولى. ماريام واقفة جنب عربية صغيرة عليها أدوية وسلندر.",
     dialogue: [],
   },
 
