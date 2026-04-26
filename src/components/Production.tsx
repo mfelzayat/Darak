@@ -60,7 +60,7 @@ export default function Production() {
 
         <div className="mt-8 flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 text-bone/50 text-[13px] leading-relaxed">
           <p>
-            مارينا آي ريزيدنس — <bdi>DARAK</bdi> · تصور دعائي تليفزيوني — كل
+            مارينا آاي ريزيدينس — <bdi>DARAK</bdi> · تصور دعائي تليفزيوني — كل
             المرئيات والنصوص والإخراج محفوظة لـ <bdi>Strike Media</bdi> ©{" "}
             <bdi>{new Date().getFullYear()}</bdi>.
           </p>

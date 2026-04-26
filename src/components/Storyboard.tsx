@@ -86,7 +86,7 @@ function SceneCover({ sceneNumber }: { sceneNumber: number }) {
         </span>
         <div className="flex-1 h-px bg-white/5" />
         <span>
-          مارينا آي ريزيدنس × <bdi>DARAK</bdi>
+          مارينا آاي ريزيدينس × <bdi>DARAK</bdi>
         </span>
       </div>
     </motion.div>
@@ -335,7 +335,7 @@ export default function StoryboardSection() {
         </span>
         <div className="flex-1 h-px bg-white/5" />
         <span>
-          مارينا آي ريزيدنس × <bdi>DARAK</bdi>
+          مارينا آاي ريزيدينس × <bdi>DARAK</bdi>
         </span>
       </div>
     </section>

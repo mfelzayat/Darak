@@ -17,7 +17,7 @@ export default function OptionToggle() {
       <div className="max-w-[1600px] mx-auto px-4 md:px-12 py-3 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 text-[11px] tracking-widest text-bone/50">
           <span className="hidden md:inline">
-            مارينا آي ريزيدنس × <bdi>DARAK</bdi>
+            مارينا آاي ريزيدينس × <bdi>DARAK</bdi>
           </span>
           <span className="md:hidden">
             <bdi>DARAK</bdi>
